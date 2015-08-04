@@ -1,0 +1,4 @@
+kick2.mp3 
+	from http://taira-komori.jpn.org/attck01tw.html
+	License http://taira-komori.jpn.org/freesounden.html
+

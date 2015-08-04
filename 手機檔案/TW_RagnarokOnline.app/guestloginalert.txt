@@ -1,0 +1,34 @@
+﻿If you are logged in as a Guest, game data cannot be
+accessed from another device and data will be lost if the
+app is uninstalled.
+In-game item trading is also unavailable for Guest
+accounts. Please make sure to link your Facebook ID,
+when logging in, to save your game data。
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

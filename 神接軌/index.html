@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title></title>
+	<script type="text/javascript" src="game_sample/js/loadGame.js"></script>
+	<script type="text/javascript" src="/socket.io/socket.io.js"></script>
+	<script type="text/javascript">
+		window.socket = io.connect('http://ntut.cc:81');
+		window.isOnline = 1;
+	</script>
+	<!-- // <script src="https://gist.github.com/Hoff97/9842228.js"></script> -->
+	<link rel="stylesheet" type="text/css" href="style/global.css"/>
+</head>
+<body class="select-close"></body>
+<div id="loader"></div>
+</html>
+<script type="text/javascript">
+	var	loginFlag = {};
+	var signUpFlag = {};
+	
+	setInterval(sendUser, 33);
+	// setInterval(sendUser, 3333);
+
+	function sendUser () {
+		var tim = new Date();
+		if (typeof game != "undefined") {
+			if (game.role) {
+				var user = cloneUser(game.role);
+				user = $.extend({}, user);
+				user.statusList = null;
+				user.skills = null;
+				socket.emit('Users', {
+					user: JSON.stringify(user),
+					lastTime: tim.getTime()
+				})
+			};
+		};
+	}
+
+	function resetRole (des, src) {
+		for (var key in src) {
+			if (key == "head") {
+				des[key] = head[src[key]];
+			} else if (key != "sprite" && key != "map") {
+				des[key] = src[key];
+			}
+		}
+		return des;
+	}
+</script>

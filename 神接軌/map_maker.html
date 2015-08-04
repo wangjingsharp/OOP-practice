@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<script src="game_sample/javascript/jquery.js"></script>
+		<script src="game_sample/javascript/tiles.js"></script>
+		<script src="game_sample/javascript/map_maker.js"></script>
+		<style>
+			#left{
+				width: 80%;
+				height: 100%;
+				overflow: scroll;
+				float: left;
+			}
+			#right{
+				width: 280px;
+				float: left;
+			}
+			body, html{
+				width: 100%;
+				height: 100%;
+				overflow: hidden;
+			}
+			*{
+				margin: 0px;
+				padding: 0px;
+				-webkit-touch-callout: none;
+				-webkit-user-select: none;
+				-khtml-user-select: none;
+				-moz-user-select: none;
+				-ms-user-select: none;
+				user-select: none;
+			}
+			.tile{
+				border: 1px solid #000;
+			}
+			.tile.selected{
+				border: 1px solid #F00;
+			}
+			button{
+				padding: 3px;
+			}
+			#right{
+				border-left: 1px solid #ccc;
+				height: 100%;
+				overflow: scroll;
+			}
+			#menu {
+				margin: 0px;
+				padding: 0px;
+			}
+			#menu li{
+				width: 66px;
+				font-size: 10px;
+				text-align: center;
+				float: left;
+				background-color: #CCC;
+				color: #666;
+				padding: 5px 0px;
+			}
+			#menu:after{
+				content: "";
+				display: block;
+				clear: both;
+			}
+			#menu li:hover,#menu li.selected{
+				color: #FFF;
+				background-color: #4665ac;
+			}
+			.clr{
+				clear: both;
+			}
+			.git{
+				width: 60px;
+				height: 40px;
+				border: 1px solid #333;
+				display: inline-block;
+			}
+			.git.selected{
+				border: 1px solid #F00;
+			}
+			.git-1{
+				background-color: #b32929;
+				line-height: 40px;
+				text-align: center;
+			}
+			.git-1:after{
+				content: "不可走";
+			}
+			.git-0{
+				background-color: #368e18;
+				line-height: 40px;
+				text-align: center;
+			}
+			.git-0:after{
+				content: "可走";
+			}
+			.object{
+				border: 1px solid #333;
+			}
+			.object.selected{
+				border: 1px solid #F00;
+			}
+			#object-use-list .object{
+				padding: 3px;
+				margin: 3px;
+				border-color: #666;
+				border-radius: 3px;
+			}
+			h3{
+				margin: 10px 0px;
+				color: #666;
+			}
+			#git-list,#tile-list, #object-list{
+				margin: 0px 10px;
+			}
+			textarea{
+				width: 100%;
+				height: 200px;
+			}
+			.button{
+				width: 60px;
+				padding: 3px 5px;
+				display: inline-block;
+				margin: 5px;
+				background-color: #4665AC;
+				text-align: center;
+				color: #FFF;
+				border-radius: 3px;
+			}
+
+			
+			div.object span {
+				background-color: #333;
+				border-radius: 101px;
+				width: 20px;
+				height: 20px;
+				display: inline-block;
+				color: #FFF;
+				text-align: center;
+				font-size: 12px;
+				line-height: 20px;
+				cursor: pointer;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="left">
+			<canvas></canvas>
+		</div>
+		<div id="right">
+			<ul id="menu">
+				<li mode="tile">地板</li>
+				<li mode="git">移動</li>
+				<li mode="object">建築物</li>
+				<li mode="save">儲存讀取</li>
+			</ul>
+			<div id="tile-list">
+				<div id="tile-palette-list">
+					<h3>地板素材列表</h3>
+				</div>
+			</div>
+			<div id="git-list">
+				<div id="git-palette-list">
+					<h3>移動模式</h3>
+				</div>
+			</div>
+			<div id="object-list">
+				<div id="object-palette-list">
+					<h3>物件素材列表</h3>
+				</div>
+				<div id="object-use-list">
+					<h3>場上的物件</h3>
+				</div>
+			</div>
+			<div id="save">
+				<textarea id="savearea"></textarea>
+				<a class="button" onclick="MapMaker.save()">存檔</a>
+				<a class="button" onclick="MapMaker.load()">讀取</a>
+			</div>
+			<div class="clr"></div>
+		</div>
+	</body>
+</html>

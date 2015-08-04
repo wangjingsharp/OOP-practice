@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<title>NPC_Maker</title>
+		<script src="javascript/jquery.js"></script>
+		<script src="javascript/node.js"></script>
+		<script src="javascript/npc_maker.js"></script>
+		<script src="javascript/mission/mission.js"></script>
+		<script src="javascript/mission/gather.js"></script>
+		<script src="javascript/mission/quest.js"></script>
+		<script src="javascript/mission/tracing.js"></script>
+		<style>
+			* {
+				margin: 0;
+				padding: 0;
+			}
+			html, body {
+				height: 100%;
+				width: 100%;
+				overflow: hidden;
+			}
+			.left {
+				float: left;
+				/*width: 300px;*/
+				width: 20%;
+				height: 100%;
+			}
+			.photo {
+				height: 30%;
+				overflow: scroll;
+				text-align: center;
+			}
+			.tree-node {
+				height: 70%;
+				overflow: scroll;
+			}
+			.tree-node ul li {
+				list-style: none;
+				cursor: pointer;
+			}
+			.tree-node ul li:hover {
+				background: #4665ac;
+				color: #ffffff;
+			}
+			.right {
+				width: 80%;
+				height: 100%;
+				float: right;
+			}
+			nav ul li {
+				float: left;
+				list-style-type: none;
+				width: 20%;
+				text-align: center;
+				padding: 5px 0;
+				background: #cccccc;
+				cursor: pointer;
+			}
+			nav ul li:hover {
+				background: #4665ac;
+				color: #ffffff;
+			}
+			.active {
+				background: #4665ac;
+				color: #ffffff;
+			}
+			nav:after {
+				display: block;
+				height: 0;
+				visibility: hidden;
+				clear: both;
+				content: '';
+			}
+			.main {
+				height: 100%;
+				overflow: scroll;
+			}
+			.main > * {
+				margin: 20px;
+			}
+		</style>
+	</head>
+	<body>
+		<div class="left">
+			<div class="photo">
+				<img src="../images/object/obj_ch1_t22.png" alt="">
+			</div>
+			<div class="tree-node">
+			</div>
+		</div>
+		<div class="right">
+			<nav>
+				<ul>
+					<li id="btn-content" class='active'>新增對話</li>
+					<li id="btn-mission">新增任務</li>
+					<li id="btn-stroe">商人</li>
+					<li id="btn-stock">倉庫</li>
+					<li id="btn-export">輸出</li>
+				</ul>
+			</nav>
+			<div class="main">
+				<div id="content-main" class="content">
+					<div class="row">
+						<label for="#">節點名稱(選項)</label>
+					</div>
+					<div class="row">
+						<input type="text" name="content-name" id="content-name">
+					</div>
+					<div class="row">
+						<label for="">對話內容</label>
+					</div>
+					<div class="row">
+						<textarea name="content-text" id="content-text" cols="30" rows="10"></textarea>
+					</div>
+					<div class="row">
+						<button type="button" id="save-content">儲存</button>
+					</div>
+				</div>
+				<div id="mission-main" class="content">
+					<div class="row">
+						<input type="text" id="mission-name" placeholder="任務名稱">
+					</div>
+					<div class="row">
+						<textarea name="mission-content" id="mission-content" cols="30" rows="10"></textarea>
+					</div>
+				</div>
+				<div id="export-main" class="content">
+					<div class="row">
+						<textarea name="export-content" id="export-content" cols="30" rows="10"></textarea>
+					</div>
+				</div>
+			</div>
+		</div>
+	</body>
+</html>
